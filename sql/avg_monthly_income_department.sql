@@ -1,10 +1,7 @@
-SELECT 
-    jobrole,
-    COUNT(*) AS total_people,
-    SUM(CASE WHEN attrition = 'Yes' THEN 1 ELSE 0 END) AS attrition_count,
-    ROUND(100.0 * AVG(CASE WHEN attrition = 'Yes' THEN 1 ELSE 0 END), 2) AS attrition_pct
+SELECT department,
+       ROUND(AVG(monthlyincome), 2) AS avg_income
 FROM hr.employee_raw
-GROUP BY jobrole
-ORDER BY attrition_pct DESC;
+GROUP BY department
+ORDER BY avg_income DESC;
 
 
