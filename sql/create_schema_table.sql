@@ -1,10 +1,44 @@
-SELECT 
-    jobrole,
-    COUNT(*) AS total_people,
-    SUM(CASE WHEN attrition = 'Yes' THEN 1 ELSE 0 END) AS attrition_count,
-    ROUND(100.0 * AVG(CASE WHEN attrition = 'Yes' THEN 1 ELSE 0 END), 2) AS attrition_pct
-FROM hr.employee_raw
-GROUP BY jobrole
-ORDER BY attrition_pct DESC;
+-- A. schema
+CREATE SCHEMA IF NOT EXISTS hr;
+
+-- B. table 
+CREATE TABLE hr.employee_raw (
+  age int,
+  attrition text,
+  businesstravel text,
+  dailyrate int,
+  department text,
+  distancefromhome int,
+  education int,
+  educationfield text,
+  employeecount int,
+  employeenumber int PRIMARY KEY,
+  environmentsatisfaction int,
+  gender text,
+  hourlyrate int,
+  jobinvolvement int,
+  joblevel int,
+  jobrole text,
+  jobsatisfaction int,
+  maritalstatus text,
+  monthlyincome int,
+  monthlyrate int,
+  numcompaniesworked int,
+  over18 text,
+  overtime text,
+  percentsalaryhike int,
+  performancerating int,
+  relationshipsatisfaction int,
+  standardhours int,
+  stockoptionlevel int,
+  totalworkingyears int,
+  trainingtimeslastyear int,
+  worklifebalance int,
+  yearsatcompany int,
+  yearsincurrentrole int,
+  yearssincelastpromotion int,
+  yearswithcurrmanager int
+);
+
 
 
